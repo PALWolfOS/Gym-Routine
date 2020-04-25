@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{%block title%}{%endblock%}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        <!-- Title / Logo -->
+        <a class="navbar-brand" href="#">Gym Routine App</a>
+
+        <!--button that appears on smaller screens (called navbar toggler) -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleDiv" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+         <div class="collapse navbar-collapse" id="collapsibleDiv">
+                <!-- navbar list-->
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('index') }}">Home<span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('getWorkouts') }}">My Workouts</a>
+                  </li>
+                </ul>
+
+                <span class="navbar-brand">Welcome <a href="#">Logout</a></span>
+          </div>
+    </nav>
+
+    {%block content%}
+    {%endblock%}
+</body>
+</html>
