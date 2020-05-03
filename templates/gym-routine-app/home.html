@@ -1,16 +1,14 @@
-{%extends "base.html" %}
+{%extends "gym-routine-app/base.html" %}
 
-{%block title%}My Workouts{%endblock%}
+{%block title%}Home{%endblock%}
 
 {%block content%}
-    <br>
-    <div class="col-lg-12 text-center">
-        <a href="#" class="text-success"><h1>Add New Workout &#10753;</h1></a>
-    </div>
+  <br>
+  <h1 class="col-12 text-center text-success">Welcome to the world of Workouts!</h1>
+  <h5 class="col-12 text-center">Here's all the shared workouts among users.</h5>
+  <br>
 
-    <br>
-
-    <div class="card-deck col-lg-12">
+  <div class="card-deck col-lg-12" style="overflow:auto;">
         <span class="col-1"></span>
 
         <div class="card col-2">
@@ -60,6 +58,6 @@
 
         <span class="col-1"></span>
 
-    </div>
+  </div>
 
 {%endblock%}

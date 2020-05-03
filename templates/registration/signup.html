@@ -1,0 +1,60 @@
+{% extends "registration/base.html" %}
+
+{% block title %}Sign Up{% endblock %}
+
+{%block content %}
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <nav class="white black-text" style="padding: 10px">
+    <div class="nav-wrapper">
+        <ul class="flashes">
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    </div>
+  </nav>
+  {% endif %}
+{% endwith %}
+
+<h1>Account Sign-Up</h1>
+<br>
+
+<form method="POST" action="/signup">
+    {{ form.csrf_token }}
+
+    <div class="form-group">
+        {{ form.username.label }}
+        {{ form.username(size=50, class_="form-control") }}
+     </div>
+
+    <div class="form-group">
+        {{ form.email.label }}
+        {{ form.email(size=50, class="form-control") }}
+    </div>
+
+    <div class="form-group">
+        {{ form.password.label }}
+        {{ form.password(size=50, class="form-control") }}
+    </div>
+
+    <div class="form-group">
+        {{ form.confirm.label }}
+        {{ form.confirm(size=50, class="form-control") }}
+    </div>
+
+    {{form.submit(class = "btn btn-success btn-lg") }}
+
+    <br>
+    {% if form.errors%}
+        <ul class=errors>
+            {% for field in form %}
+              <li>{{ field.error }}</li>
+            {% endfor %}
+        </ul>
+  {% endif %}
+</form>
+<br>
+<a href="{{ url_for('login') }}">User Already Registered? Log In</a>
+{%endblock%}

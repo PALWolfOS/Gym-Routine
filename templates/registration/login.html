@@ -1,0 +1,29 @@
+{% extends "registration/base.html" %}
+
+{% block title %}Log In{% endblock %}
+
+{%block content %}
+
+<h1>Account Login</h1>
+<br>
+
+<form method="POST" action="/login">
+    {{ form.csrf_token }}
+
+    <div class="form-group">
+        {{ form.username.label }}
+        {{ form.username(size=50, class_="form-control") }}
+     </div>
+
+    <div class="form-group">
+        {{ form.password.label }}
+        {{ form.password(size=50, class="form-control") }}
+    </div>
+
+    {{form.submit(class = "btn btn-success btn-lg") }}
+
+    <br>
+</form>
+<br>
+<a href="{{ url_for('signUp') }}">Not Registered? Sign Up</a>
+{%endblock%}
