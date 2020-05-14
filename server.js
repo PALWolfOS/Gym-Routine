@@ -16,7 +16,7 @@ var express = require('express'),
     VALID_ORDER_CRITERIA = ['date', 'rating', 'relevance', 'title', 'videoCount', 'viewCount'],
     DEFAULT_MAX_RESULTS = 5,
     PAGE_SIZE = 50,
-    API_KEY = 'REPLACE_ME_WITH_YOUR_DEV_KEY';                                      
+    API_KEY = 'AIzaSyBjFrPj_MhxWD_ZUIdlFtk09MNjcOzpCyo';                                      
 
 app.configure(function(){
   app.use('/', express.static(__dirname + staticFolder));
