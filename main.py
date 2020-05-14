@@ -2,6 +2,7 @@ from flask import Flask, request, render_template, flash, redirect, url_for
 from models import Workout, User, db
 from forms import SignUpForm, LogInForm
 from flask_login import login_user, logout_user, LoginManager
+from flask_jwt import JWT, jwt_required, current_identity
 
 
 def create_app():
@@ -67,3 +68,49 @@ def index():
 @app.route('/my-workouts')
 def getWorkouts():
     return render_template("my-workouts.html")
+ 
+@app.route('/my-workouts', methods=['POST'])
+@jwt_required()
+def addWorkout():
+  form = WorkOutForm()
+  data = request.form()
+  rec = Workout(id=data["id"], title=data["title"], user_id=current_identity.user_id, )
+  db.session.add(rec)
+  db.session.commit()
+  Workouts = Workout.query.all()
+  return render_template("gym-routine-app/my-workouts.html", workouts=Workouts)  
+
+@app.route('/my-workouts/<id>', methods=['PUT'])
+@jwt_required()
+def update_my_workouts(num):
+  num = int(num)
+  queryset = Box.query.filter_by(id=current_identity.id).all()
+  if queryset == None:
+    return 'Invalid id or unauthorized'
+  if len(queryset) == 0:
+    return 'No Workouts scheduled!'
+  if num > len(queryset):
+    return 'Invalid num specified'
+  my_pokemon = queryset[num - 1]
+  data = request.form()
+  if 'title' in data:
+    my-workouts.title = data['title']
+  db.session.add(my_pokemon)
+  db.session.commit()
+  return 'Updated', 201
+
+@app.route('/mypokemon/<id>', methods=['DELETE'])
+@jwt_required()
+def delete_my_workout(id):
+  num = int(id)
+  queryset = Workout.query.filter_by(id=current_identity.id).all()
+  if queryset == None:
+    return 'Invalid id or unauthorized'
+  if len(queryset) == 0:
+    return 'No Workouts scheduled!'
+  if num > len(queryset):
+    return 'Invalid num specified'
+  my_pokemon = queryset[num - 1]
+  db.session.delete(my_workout) # delete the object
+  db.session.commit()
+  return 'Deleted', 204
