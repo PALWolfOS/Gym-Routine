@@ -29,13 +29,21 @@ class Workout(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(80), nullable=False, unique= True)
     split = db.Column(db.String(80), nullable = False)
-    duration = db.Column(db.Integer , nullable = False)
+    duration_minutes = db.Column(db.Integer , nullable = False)
+    duration_seconds = db.Column(db.Integer , nullable = False)
+    date = db.Column(db.DateTime, default=datetime.utcnow, nullable = False)
+    video =
+    audio = 
+    photo =
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable = False)
+    
 
     def toDict(self):
         return {
             "id": self.id,
             "title": self.title,
             "split": self.split,
-            "duration": self.duration
+            "duration_minutes": self.duration_minutes,
+            "duration_seconds": self.duration_seconds,
+            "date": self.date
         }
