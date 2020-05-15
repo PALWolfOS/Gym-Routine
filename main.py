@@ -3,13 +3,19 @@ from models import Workout, User, db
 from forms import SignUpForm, LogInForm
 from flask_login import login_user, logout_user, LoginManager
 from flask_jwt import JWT, jwt_required, current_identity
+import os
 
+from werkzeug.utils import secure_filename
+
+UPLOAD_FOLDER = 'Gym-Routine/static/images/'
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 def create_app():
     app = Flask(__name__, static_url_path='')
     app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///test.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
     app.config['SECRET_KEY'] = "MYSECRET"
+    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
     db.init_app(app)
     return app
 
@@ -72,34 +78,35 @@ def getWorkouts():
 @app.route('/my-workouts', methods=['POST'])
 @jwt_required()
 def addWorkout():
-  form = WorkOutForm()
+  form = WorkoutForm()
   data = request.form()
-  rec = Workout(id=data["id"], title=data["title"], user_id=current_identity.user_id, )
+  rec = Workout(title=data["title"], user_id=current_identity.id, date = data["date"], split=data["split"], duration_minutes=data["duration_minutes"], duration_seconds=data["duration_seconds"], video=data["video"], audio=data["audio"], photo=data["photo"])
   db.session.add(rec)
   db.session.commit()
   Workouts = Workout.query.all()
-  return render_template("gym-routine-app/my-workouts.html", workouts=Workouts)  
+  return render_template("gym-routine-app/my-workouts.html", workouts=Workout)  
 
 @app.route('/my-workouts/<id>', methods=['PUT'])
 @jwt_required()
-def update_my_workouts(num):
-  num = int(num)
-  queryset = Box.query.filter_by(id=current_identity.id).all()
+def update_my_workouts(id):
+  form = WorkoutForm()  
+  num = int(id)
+  queryset = Workout.query.filter_by(id=current_identity.id).all()
   if queryset == None:
     return 'Invalid id or unauthorized'
   if len(queryset) == 0:
     return 'No Workouts scheduled!'
   if num > len(queryset):
-    return 'Invalid num specified'
-  my_pokemon = queryset[num - 1]
-  data = request.form()
-  if 'title' in data:
-    my-workouts.title = data['title']
-  db.session.add(my_pokemon)
+    return 'Invalid id specified'
+  my_workout = queryset[num - 1]
+  #data = request.json()         This is in the event that the titles of the workout are stored in a csv file
+  #if 'title' in data:
+    #my-workout.title = data['title']
+  db.session.add(my_workout)
   db.session.commit()
   return 'Updated', 201
 
-@app.route('/mypokemon/<id>', methods=['DELETE'])
+@app.route('/my-workouts/<id>', methods=['DELETE'])
 @jwt_required()
 def delete_my_workout(id):
   num = int(id)
@@ -110,7 +117,7 @@ def delete_my_workout(id):
     return 'No Workouts scheduled!'
   if num > len(queryset):
     return 'Invalid num specified'
-  my_pokemon = queryset[num - 1]
+  my_workout = queryset[num - 1]
   db.session.delete(my_workout) # delete the object
   db.session.commit()
   return 'Deleted', 204
