@@ -84,7 +84,7 @@ def addWorkout():
   db.session.add(rec)
   db.session.commit()
   Workouts = Workout.query.all()
-  return render_template("gym-routine-app/my-workouts.html", workouts=Workout)  
+  return render_template("gym-routine-app/my-workouts.html", workouts=Workouts)  
 
 @app.route('/my-workouts/<id>', methods=['PUT'])
 @jwt_required()
@@ -104,7 +104,8 @@ def update_my_workouts(id):
     #my-workout.title = data['title']
   db.session.add(my_workout)
   db.session.commit()
-  return 'Updated', 201
+  Workouts = Workout.query.all()
+  return render_template("gym-routine-app/my-workouts.html", workouts=Workouts)
 
 @app.route('/my-workouts/<id>', methods=['DELETE'])
 @jwt_required()
@@ -120,4 +121,5 @@ def delete_my_workout(id):
   my_workout = queryset[num - 1]
   db.session.delete(my_workout) # delete the object
   db.session.commit()
-  return 'Deleted', 204
+  Workouts = Workout.query.all()
+  return render_template("gym-routine-app/my-workouts.html", workouts=Workouts)
