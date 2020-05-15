@@ -1,7 +1,15 @@
+{%extends "gym-routine-app/my-workouts.html" %}
+
+{%block title%}mediarecording{%endblock%}
+
+{{ super() }}
+
+{%block content%}
+
 <video autoplay style="height:180px; width: 240px;" poster="https://image.freepik.com/free-icon/video-camera-symbol_318-40225.png"></video>
 
 <p><button onclick="getStream()">Get video/audio stream and start recording</button></p>
 
 <p><button onclick="download()">Download File</button></p>
 
-
+{%endblock%}
