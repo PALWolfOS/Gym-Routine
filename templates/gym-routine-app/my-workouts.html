@@ -1,6 +1,9 @@
 {%extends "gym-routine-app/base.html" %}
 
 {%block title%}My Workouts{%endblock%}
+{% block page %} {{ current_user.username }}'s' Workouts{% endblock %}
+
+{{ super() }}
 
 {%block content%}
     <br>
