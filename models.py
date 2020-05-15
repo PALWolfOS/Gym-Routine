@@ -36,6 +36,7 @@ class Workout(db.Model):
     duration_minutes = db.Column(db.Integer , nullable = False)
     duration_seconds = db.Column(db.Integer , nullable = False)
     date = db.Column(db.DateTime, default=datetime.utcnow, nullable = False)
+    description = db.Column(db.String(240), nullable = True)
     #video = db.Column(
     #audio = db.Column(
     #photo = db.Column(
@@ -49,6 +50,7 @@ class Workout(db.Model):
             "split": self.split,
             "duration_minutes": self.duration_minutes,
             "duration_seconds": self.duration_seconds,
+            "description": self.description,
             #"video": self.video,
             #"audio": self.audio,
             #"photo": self.photo,
