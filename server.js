@@ -9,8 +9,6 @@ var express = require('express'),
       */
     port = process.env.PORT || 8080,
     /** @property VALID_ORDER_CRITERIA
-      * @private
-      * 
       * A list of the admissable values for the "order" parameter in YouTube video searches.
       */
     VALID_ORDER_CRITERIA = ['date', 'rating', 'relevance', 'title', 'videoCount', 'viewCount'],
@@ -63,8 +61,6 @@ function validateOrderParameter (value, defaultValue) {
 }
 
 /** @function search
-  * @private
-  *
   * Perform the actual search
   * 
   * @param {Object} options   The collection of properties to be set as parameter for the DAta API's search method.
