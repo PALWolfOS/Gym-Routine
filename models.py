@@ -23,6 +23,10 @@ class User(db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password, password)
+    
+    #To String method
+    def __repr__(self):
+        return '<User {}>'.format(self.username)  
 
 
 class Workout(db.Model):
