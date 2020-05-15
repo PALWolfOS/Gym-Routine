@@ -12,7 +12,7 @@ for ($xx=0; $xx<$numIDs; $xx++) {
  
 $thePart   = "snippet";   //see API documentation for options
 
-$theAPIkey  = 'replace-this-with-your-API-key';
+$theAPIkey  = 'AIzaSyBjFrPj_MhxWD_ZUIdlFtk09MNjcOzpCyo';
 $theURL   = "https://www.googleapis.com/youtube/v3/videos?id=" . 
 $IDstring . "&part=".$thePart."&key=".$theAPIkey;
  
