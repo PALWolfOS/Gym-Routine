@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template, flash, redirect, url_for
 from models import Workout, User, db
-from forms import SignUpForm, LogInForm
+from forms import SignUpForm, LogInForm, WorkoutForm
 from flask_login import login_user, logout_user, LoginManager
 from flask_jwt import JWT, jwt_required, current_identity
 import os
@@ -8,7 +8,7 @@ import os
 from werkzeug.utils import secure_filename
 
 UPLOAD_FOLDER = 'Gym-Routine/static/images/'
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'mp3', 'mp4', 'mpa' ])
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif', 'mp3', 'mp4', 'm4a', 'mov', 'webm', 'wav'])
 
 def create_app():
     app = Flask(__name__, static_url_path='')
@@ -76,7 +76,7 @@ def getWorkouts():
     return render_template("my-workouts.html")
  
 @app.route('/my-workouts', methods=['POST'])
-@jwt_required()
+@login_required()
 def addWorkout():
   form = WorkoutForm()
   data = request.form()
@@ -87,13 +87,15 @@ def addWorkout():
   return render_template("gym-routine-app/my-workouts.html", workouts=Workouts)  
 
 @app.route('/my-workouts/<id>', methods=['PUT'])
-@jwt_required()
+@login_required()
 def update_my_workouts(id):
   form = WorkoutForm()  
+  Workouts = Workout.query.all()
   num = int(id)
   queryset = Workout.query.filter_by(id=current_identity.id).all()
   if queryset == None:
-    return 'Invalid id or unauthorized'
+    flash('Account Created!')    
+    return render_template("gym-routine-app/my-workouts.html", workouts=Workouts)
   if len(queryset) == 0:
     return 'No Workouts scheduled!'
   if num > len(queryset):
@@ -104,11 +106,11 @@ def update_my_workouts(id):
     #my-workout.title = data['title']
   db.session.add(my_workout)
   db.session.commit()
-  Workouts = Workout.query.all()
+  
   return render_template("gym-routine-app/my-workouts.html", workouts=Workouts)
 
 @app.route('/my-workouts/<id>', methods=['DELETE'])
-@jwt_required()
+@login_required()
 def delete_my_workout(id):
   num = int(id)
   queryset = Workout.query.filter_by(id=current_identity.id).all()
