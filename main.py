@@ -4,11 +4,13 @@ from forms import SignUpForm, LogInForm, WorkoutForm
 from flask_login import login_user, logout_user, LoginManager
 from flask_jwt import JWT, jwt_required, current_identity
 import os
-
+from server import validatePositiveNumber, validateOrderParameter, search, collectResultsUpToLastPage, doSearch, parseData, route
+from audionode import SoundData, AudioConnection, AudioInput, AudioOutput, AudioNode, AudioBuffer, AudioRequest, loadAif, AudioGainNode, AudioSourceNode,   AudioBufferSourceNode, ConvolverNode, AudioLow2PassFilterNode, MediaElementAudioSourceNode, AudioContext, RealtimeAnalyserNode, AudioDestinationNode, AudioPannerNode
+from mediarecording import getUserMedia, getStream, recorderOnDataAvailable, download
 from werkzeug.utils import secure_filename
 
 UPLOAD_FOLDER = 'Gym-Routine/static/images/'
-ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif', 'mp3', 'mp4', 'm4a', 'mov', 'webm', 'wav'])
+ALLOWED_EXTENSIONS = set(['png', 'jpgAudioOutput 'jpeg', 'gif', 'mp3', 'mp4', 'm4a', 'mov', 'webm', 'wav'])
 
 def create_app():
     app = Flask(__name__, static_url_path='')
