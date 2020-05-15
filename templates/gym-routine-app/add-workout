@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+{% block title %} Todo{% endblock %}
+{% block page %} {{ current_user.username }}'s' Todo{% endblock %}
+
+{{ super() }}
+
+{% block content %}
+  {% if current_user.is_authenticated %}
+  <form method="POST" action="/login">
+    {{ form.csrf_token }}
+        <span class="col-1"></span>
+
+        <div class="card col-2">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+  </form>    
+  <div class="container">
+    <div class="row">
+      <form class="col s12 m8 offset-m2 card-panel" method="POST" action="/todos">
+            
+            {{ form.csrf_token }}
+
+            <div class="input-field col s12 m8 offset-m2"> 
+              {{ form.text(size=200, class="validate materialize-textarea") }}
+              {{ form.text.label }}
+            </div>
+
+            <div class="input-field col s12 m8 offset-m2">
+              {{form.submit}}
+              
+              <div class="card-deck col-lg-12" style="overflow:auto;">
+        <span class="col-1"></span>
+
+        <div class="card col-2">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+      
+      
+{% extends "gym-routine-app/base.html" %}
+
+{% block title %}Log In{% endblock %}
+
+{{ super() }}
+
+{%block content %}
+
+<h1>Account Login</h1>
+<br>
+
+<form method="POST" action="/login">
+    {{ form.csrf_token }}
+
+    <div class="form-group">
+        {{ form.username.label }}
+        {{ form.username(size=50, class_="form-control") }}
+     </div>
+
+    <div class="form-group">
+        {{ form.password.label }}
+        {{ form.password(size=50, class="form-control") }}
+    </div>
+
+    {{form.submit(class = "btn btn-success btn-lg") }}
+
+    <br>
+</form>
+<br>
+<a href="{{ url_for('signUp') }}">Not Registered? Sign Up</a>
+{%endblock%}
+            </div> 
+        </form>
+    </div>
+  </div>
+        
+  </div>
+
+  {% endif %}
+{% endblock %}
