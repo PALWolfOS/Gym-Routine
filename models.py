@@ -26,15 +26,15 @@ class User(db.Model):
 
 
 class Workout(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True) #we can use the id number for number of days in a routine, with a hardcap on 7 
     title = db.Column(db.String(80), nullable=False, unique= True)
     split = db.Column(db.String(80), nullable = False)
     duration_minutes = db.Column(db.Integer , nullable = False)
     duration_seconds = db.Column(db.Integer , nullable = False)
     date = db.Column(db.DateTime, default=datetime.utcnow, nullable = False)
-    video =
-    audio = 
-    photo =
+    video = db.Column(
+    audio = db.Column(
+    photo = db.Column(
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable = False)
     
 
@@ -45,5 +45,8 @@ class Workout(db.Model):
             "split": self.split,
             "duration_minutes": self.duration_minutes,
             "duration_seconds": self.duration_seconds,
+            "video": self.video,
+            "audio": self.audio,
+            "photo": self.photo,
             "date": self.date
         }
