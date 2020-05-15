@@ -8,7 +8,7 @@ import os
 from werkzeug.utils import secure_filename
 
 UPLOAD_FOLDER = 'Gym-Routine/static/images/'
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'mp3', 'mp4', 'mpa' ])
 
 def create_app():
     app = Flask(__name__, static_url_path='')
