@@ -28,3 +28,5 @@ if ( $file_contents === FALSE ) {
     echo 'cURL error: ' . curl_error($ch);
 }  
 curl_close($ch);
+
+ 
