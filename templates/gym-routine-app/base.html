@@ -27,7 +27,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
         <!-- Title / Logo -->
-        <a class="navbar-brand" href="{{ url_for('base') }}">Gym Routine App</a>
+        <a class="navbar-brand" href="{{ url_for('home') }}">Gym Routine App</a>
 
         <!--button that appears on smaller screens (called navbar toggler) -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleDiv" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,10 +39,10 @@
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
                   <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('index') }}">Home<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{ url_for('home') }}">Home<span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('getWorkouts') }}">My Workouts</a>
+                    <a class="nav-link" href="{{ url_for('my-workouts') }}">My Workouts</a>
                   </li>
                 </ul>
 
