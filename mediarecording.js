@@ -6,9 +6,12 @@ function getUserMedia(options, successCallback, failureCallback) {
   }
 }
 
+
 var theStream;
 var theRecorder;
 var recordedChunks = [];
+
+
 
 function getStream() {
   if (!navigator.getUserMedia && !navigator.webkitGetUserMedia &&
