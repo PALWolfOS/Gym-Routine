@@ -20,6 +20,7 @@
   {% endif %}
 {% endwith %}
 
+
   {% if current_user.is_authenticated %}
   <form method="POST" action="/my-workouts">
     {{ form.csrf_token }}
