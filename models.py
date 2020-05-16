@@ -44,7 +44,7 @@ class Workout(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable = False)
     
 
-    def toDict(self):
+   def toDict(self):
         return {
             "id": self.id,
             "title": self.title,
