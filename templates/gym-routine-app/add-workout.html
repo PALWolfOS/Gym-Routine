@@ -5,6 +5,21 @@
 {{ super() }}
 
 {% block content %}
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <nav class="white black-text" style="padding: 10px">
+    <div class="nav-wrapper">
+        <ul class="flashes">
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    </div>
+  </nav>
+  {% endif %}
+{% endwith %}
+
   {% if current_user.is_authenticated %}
   <form method="POST" action="/my-workouts">
     {{ form.csrf_token }}
