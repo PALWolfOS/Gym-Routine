@@ -16,8 +16,9 @@ class LogInForm(FlaskForm):
     
 class WorkoutForm(FlaskForm):
     title = StringField('title', validators=[InputRequired()])
-    duration = IntegerField('Length
+    duration = IntegerField('Length of Workout Session', validators=[InputRequired()])
     date = DateTimeField('Date', validators=[InputRequired(), DateRange(
-            min=datetime(2000, 1, 1),
-            max=datetime(2000, 10, 10))]
+            min=datetime(2020, 1, 1),
+            max=datetime(9999, 12, 12))]
+    submit = SubmitField('Add Workout')
     
