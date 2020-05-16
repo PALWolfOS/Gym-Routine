@@ -2,6 +2,7 @@ function getUserMedia(constraints) {
   if (navigator.mediaDevices) {
     return navigator.mediaDevices.getUserMedia(constraints);
   }
+  
     
   // old prefixed API...
   var legacyApi = navigator.getUserMedia || navigator.webkitGetUserMedia ||
