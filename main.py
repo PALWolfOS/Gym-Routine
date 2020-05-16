@@ -4,6 +4,7 @@ from forms import SignUpForm, LogInForm, WorkoutForm
 from flask_login import login_user, logout_user, LoginManager
 from flask_jwt import JWT, jwt_required, current_identity
 import os
+import datetime
 from server import validatePositiveNumber, validateOrderParameter, search, collectResultsUpToLastPage, doSearch, parseData, route
 from audionode import SoundData, AudioConnection, AudioInput, AudioOutput, AudioNode, AudioBuffer, AudioRequest, loadAif, AudioGainNode, AudioSourceNode,   AudioBufferSourceNode, ConvolverNode, AudioLow2PassFilterNode, MediaElementAudioSourceNode, AudioContext, RealtimeAnalyserNode, AudioDestinationNode, AudioPannerNode
 from mediarecording import getUserMedia, getStream, recorderOnDataAvailable, download
@@ -82,7 +83,10 @@ def getWorkouts():
 def addWorkout():
   form = WorkoutForm()
   data = request.form()
-  rec = Workout(title=data["title"], user_id=current_identity.id, date = data["date"], split=data["split"], duration_minutes=data["duration_minutes"], duration_seconds=data["duration_seconds"], video=data["video"], audio=data["audio"], photo=data["photo"])
+  date = datetime.strptime(data["date], '%m/%d/%y')
+  dur_min = int(data["duration_minutes"])  
+  dur_sec = int(data["duration_seconds"])                              
+  rec = Workout(title=data["title"], user_id=current_identity.id, date, split=data["split"], dur_min, dur_sec, description = data["description"], video=data["video"], audio=data["audio"], photo=data["photo"])
   db.session.add(rec)
   db.session.commit()
   Workouts = Workout.query.all()
