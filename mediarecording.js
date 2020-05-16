@@ -67,7 +67,11 @@ function download() {
   a.download = 'test.webm';
   a.click();
   
-  // setTimeout() here is needed for Firefox.
+
+  
+    // setTimeout() here is needed for Firefox.
   setTimeout(function () {
       (window.URL || window.webkitURL).revokeObjectURL(url);
   }, 100)}; 
+
+
