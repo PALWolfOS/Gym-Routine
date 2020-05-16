@@ -36,17 +36,8 @@ Firebase - to use firebase you must first create an account on the firebase.goog
 The tests are run on the postman app to see if the api tests are good 
 A collection is then created using the postman app which shows all the tests which were done
 
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
 ## Deployment
-
+Firebase was used to deploy this.
 Add additional notes about how to deploy this on a live system
 
 ## Built With
