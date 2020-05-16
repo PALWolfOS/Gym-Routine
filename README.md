@@ -1,47 +1,41 @@
 # Gym-Routine
-Group Project for Info 2602 - an app that allows someone to create a personalized routine of workouts for a certain time, how long the workout is supposed to take, the number of reps and so on, and be able to view the routines of other users
+Group Project for Info 2602 - an app that allows someone to create a personalized routine of workouts for a certain time, how long the workout is supposed to take, the number of reps and so on, and be able to view the routines of other users. The users are also allowed to use their device's camera and audio inputs to record and dowload workout videos which can later be uploaded on the website and this is done by the use and incorporation of websourced APIs ( the APIs used are suited to firefox browser).
+There is also a 3rd party api which is the youtube api which allows users to search for videos that are on youtube based on workouts but from the website itself and not having to go on youtube to search.
 
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+Use github to run the project on your local machine.
+
+For youtube api to work one must make a google develpers account and when done tehy must create a project and then get the API key from there which is to be put into the server.js file.
 
 ### Prerequisites
 
 What things you need to install the software and how to install them
 
 ```
-Give examples
+
+Node.js - to install this into the environment, go into the terminal and enter 
+npm install express -d --save 
+and aslo enter 
+npm install googleapis -d --save
+
+
+Flask - to install this into the environment, go into the terminal and enter
+$ pip install Flask
+
+
+Firebase - to use firebase you must first create an account on the firebase.google.com website
+
+
 ```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+The tests are run on the postman app to see if the api tests are good 
+A collection is then created using the postman app which shows all the tests which were done
 
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
 
 ### And coding style tests
 
@@ -57,30 +51,29 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* gitpod.io
+* python
+* javascript
+* Jinja
+* node.js
+* Firebase
+* html
+* bootstrap css
+* Flask
+* Json
+* Youtube API
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Kevin Ramroop** 
+* **Joshua Samm**
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/PALWolfOS/Gym-Routine/graphs/contributors) who participated in this project.
 
-## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+***Note for the finished website angular is to be used for the frontend.
+***Note the website is not fully functional as yet due to the mishap which happened with original group and us given limited notice to complete.
