@@ -38,7 +38,15 @@ A collection is then created using the postman app which shows all the tests whi
 
 ## Deployment
 Firebase was used to deploy this.
-Add additional notes about how to deploy this on a live system
+1.First you install Firebase CLI via the command prompt  >$npm install -g firebase-tools
+2.Then you login via firebase login (you need to have signed up beforehand)
+3.Then in an appropriate directory folder, you attempt to initialize Firebase
+4.Choose the Hosting tool to setup Firebase Hosting
+5.Specify a directory to use as the public root directory (it creates a default (public) folder, but for example the GitHub folder downloaded from the repository is serviceable)
+FireBase will proceed to create a 404.html and index.html file
+6.Choose a configuration (if you decide to make a single-page app, FireBase automatically rewrites its configurations)
+7. Finally, deploy the app via the command prompt >firebase deploy 
+
 
 ## Built With
 
