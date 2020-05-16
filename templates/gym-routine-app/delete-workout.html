@@ -1,1 +1,42 @@
+{% extends "gym-routine-app/base.html" %}
+{% block title %} Delete Workout{% endblock %}
+{% block page %} Delete Workout Form{% endblock %}
+
+{{ super() }}
+
+{% block content %}
+  {% if current_user.is_authenticated %}
+  <form method="DELETE" action="/my-workouts/<id>">
+    {{ form.csrf_token }}
+        <span class="col-1"></span>
+
+        <div class="card col-2">
+        <div class="card-body">
+          <div class="form-group"> 
+              {{ form.title(size=80, class="form-control") }}
+              {{ form.title.label }}
+          </div>
+          <div class="form-group"> 
+              {{ form.duration_minutes(size=80, class="form-control") }}
+              {{ form.duration_minutes.label }}
+          </div>
+          <div class="form-group"> 
+              {{ form.duration_seconds(size=80, class="form-control") }}
+              {{ form.duration_seconds.label }}
+          </div>
+          <div class="form-group"> 
+              {{ form.date(size=10, class="form-control") }}
+              {{ form.date.label }}
+          </div>
+          <div class="form-group"> 
+              {{ form.description(size=240, class="form-control") }}
+              {{ form.description.label }}
+          </div>
+          {{form.submit(class = "btn btn-success btn-lg") }}
+        </div>
+      </div>
+  </form>      
+      
+  {% endif %}
+{% endblock %}
 
