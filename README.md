@@ -1,6 +1,6 @@
 # Gym-Routine
 Group Project for Info 2602 - an app that allows someone to create a personalized routine of workouts for a certain time, how long the workout is supposed to take, the number of reps and so on, and be able to view the routines of other users. The users are also allowed to use their device's camera and audio inputs to record and dowload workout videos which can later be uploaded on the website and this is done by the use and incorporation of websourced APIs ( the APIs used are suited to firefox browser).
-There is also a 3rd party api which is the youtube api which allows users to search for videos that are on youtube based on workouts but from the website itself and not having to go on youtube to search.
+There is also a 3rd party api which is the youtube api which allows users to search for videos that are on youtube based on workouts but from the website itself and not having to go on youtube to search. The app is made to simplify gym workout routines for users to be able to use.
 
 ## Getting Started
 
